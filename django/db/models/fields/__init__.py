@@ -341,7 +341,7 @@ class Field(RegisterLookupMixin):
         app_label = self.model._meta.app_label
         errors = []
         for alias in databases:
-            if router.allow_migrate(alias, app_label, model_name=self.model._meta.model_name):
+            if router.allow_migrate(alias, app_label):
                 errors.extend(connections[alias].validation.check_field(self, **kwargs))
         return errors
 
